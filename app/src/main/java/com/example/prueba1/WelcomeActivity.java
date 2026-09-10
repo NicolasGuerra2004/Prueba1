@@ -34,14 +34,13 @@ public class WelcomeActivity extends AppCompatActivity {
         btnContinue.setOnClickListener(v -> {
             if (!chkPermissions.isChecked()) {
                 Toast.makeText(WelcomeActivity.this, "Debes aceptar los permisos", Toast.LENGTH_SHORT).show();
-                return;
+            } else {
+                float rating = ratingBar.getRating();
+                Toast.makeText(WelcomeActivity.this, "Calificación: " + rating + " estrellas", Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
+                startActivity(intent);
             }
-
-            float rating = ratingBar.getRating();
-            Toast.makeText(WelcomeActivity.this, "Calificación: " + rating + " estrellas", Toast.LENGTH_SHORT).show();
-
-            Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
-            startActivity(intent);
         });
     }
 }
