@@ -1,24 +1,39 @@
 package com.example.prueba1;
 
+import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.activity.EdgeToEdge;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class CreateUserActivity extends AppCompatActivity {
+
+    private EditText edtName;
+    private EditText edtPassword;
+    private Button btnRegister;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_create_user);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+
+        edtName = findViewById(R.id.edt_name);
+        edtPassword = findViewById(R.id.edt_register_password);
+        btnRegister = findViewById(R.id.btn_register);
+
+        btnRegister.setOnClickListener(v -> {
+            String name = edtName.getText().toString();
+            String password = edtPassword.getText().toString();
+
+            if (name.isEmpty() || password.isEmpty()) {
+                Toast.makeText(CreateUserActivity.this, "Complete todos los campos", Toast.LENGTH_SHORT).show();
+            } else {
+                Intent intent = new Intent(CreateUserActivity.this, LoginActivity.class);
+                intent.putExtra("USER_NAME", name);
+                intent.putExtra("USER_PASSWORD", password);
+                startActivity(intent);
+            }
         });
     }
 }

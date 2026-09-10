@@ -4,4 +4,8 @@
     <string name="text_user">Usuario</string>
     <string name="text_password">Contraseña</string>
     <string name="btn_login">Ingresar</string>
+    <string name="text_register_title">Registro de Usuario</string>
+    <string name="hint_name">Nombre</string>
+    <string name="hint_register_password">Contraseña</string>
+    <string name="btn_register">Registrarse</string>
 </resources>

@@ -1,24 +1,42 @@
 package com.example.prueba1;
 
 import android.os.Bundle;
-
-import androidx.activity.EdgeToEdge;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class LoginActivity extends AppCompatActivity {
+
+    private EditText txtUser;
+    private EditText txtPassword;
+    private Button btnLogin;
+    private String registeredUser;
+    private String registeredPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_login);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+
+        txtUser = findViewById(R.id.txt_user);
+        txtPassword = findViewById(R.id.txt_password);
+        btnLogin = findViewById(R.id.btn_login);
+
+        if (getIntent() != null) {
+            registeredUser = getIntent().getStringExtra("USER_NAME");
+            registeredPassword = getIntent().getStringExtra("USER_PASSWORD");
+        }
+
+        btnLogin.setOnClickListener(v -> {
+            String inputUser = txtUser.getText().toString();
+            String inputPassword = txtPassword.getText().toString();
+
+            if (inputUser.equals(registeredUser) && inputPassword.equals(registeredPassword)) {
+                Toast.makeText(LoginActivity.this, "Login exitoso", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(LoginActivity.this, "Credenciales incorrectas", Toast.LENGTH_SHORT).show();
+            }
         });
     }
 }
