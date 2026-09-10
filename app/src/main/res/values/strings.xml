@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Prueba1</string>
+    <string name="text_welcome">Bienvenido</string>
+    <string name="text_user">Usuario</string>
+    <string name="text_password">Contraseña</string>
+    <string name="btn_login">Ingresar</string>
+</resources>
