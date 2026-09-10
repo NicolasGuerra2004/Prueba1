@@ -8,4 +8,8 @@
     <string name="hint_name">Nombre</string>
     <string name="hint_register_password">Contraseña</string>
     <string name="btn_register">Registrarse</string>
+    <string name="text_permissions">Permisos de la aplicación</string>
+    <string name="chk_accept_permissions">Acepto los permisos necesarios</string>
+    <string name="text_rating">Califica tu experiencia inicial</string>
+    <string name="btn_continue">Continuar</string>
 </resources>
